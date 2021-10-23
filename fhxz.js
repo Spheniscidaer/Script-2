@@ -111,7 +111,7 @@ function cxjs(){
         let cj = result[3].data.speedUpInfo.remainingAllTimes
         $.log(`加速次数剩余：`+cj)
         if(cj){
-        for(let i = 1;i<cj;i++){arr15.push(i)}
+        for(let i = 1;i<=cj;i++){arr15.push(i)}
         }
       } catch (e) {
         $.logErr(e, resp);
@@ -135,7 +135,7 @@ function cxcj(){
         let cj = result[0].data.lotteryInfo.remainingTimes
         $.log(`抽奖次数剩余：`+cj)
         if(cj){
-          for(let i = 1;i<cj;i++){arr.push(i)}
+          for(let i = 1;i<=cj;i++){arr.push(i)}
         }
       } catch (e) {
         $.logErr(e, resp);
@@ -394,7 +394,7 @@ function txlb(timeout = 0) {
     $.post(url, async (err, resp, data) => {
       try {
         result = JSON.parse(data);
-        var lb = resulti
+        var lb = result
         if(lb)$.log(`提现列表获取成功!`);
         //提现列表
         for(let i = 0;i<lb[0].data.marketItemList.length;i++){
