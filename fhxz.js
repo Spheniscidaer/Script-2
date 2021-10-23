@@ -394,11 +394,11 @@ function txlb(timeout = 0) {
     $.post(url, async (err, resp, data) => {
       try {
         result = JSON.parse(data);
-        var lb = result
+        var lb = resulti
         if(lb)$.log(`提现列表获取成功!`);
         //提现列表
         for(let i = 0;i<lb[0].data.marketItemList.length;i++){
-        if(lb[0].data.marketItemList[i].targetNumber > lb[0].data.marketItemList[i].progress && lb[0].data.marketItemList[0].funcParam == 3001){
+        if(lb[0].data.marketItemList[i].targetNumber > lb[0].data.marketItemList[i].progress && lb[0].data.marketItemList[i].funcParam == 3001){
           let cs = lb[0].data.marketItemList[i].targetNumber - lb[0].data.marketItemList[i].progress
           $.log(`观看视频次数不足,还差次数：`+cs)
           for(let k = 1;k < cs;k++){
