@@ -413,7 +413,7 @@ function txlb(timeout = 0) {
           await $.wait(3000);
           await tx3mao();
         } else {
-          $.log(`任务未刷完请骚等\n或今日已经提现`)
+          $.log(`任务未达成`)
         }
       }
 
