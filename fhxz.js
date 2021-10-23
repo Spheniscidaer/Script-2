@@ -1,13 +1,13 @@
 /*
 [rewrite_local]
 #富豪小镇
-https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions url script-request-body https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.js
+https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions url script-request-body https://raw.fastgit.org/LubooC/Script/main/fhxz.js
 [MITM]
 hostname = sunnytown.hyskgame.com
 #loon
-https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions url script-request-body https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.js, requires-body=true, timeout=10, tag=柠檬富豪小镇
+https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions url script-request-body https://raw.fastgit.org/LubooC/Script/main/fhxz.js, requires-body=true, timeout=10, tag=富豪小镇
 #surge
-富豪小镇 = type=https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions,requires-body=1,max-size=0,script-path=https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.js,script-update-interval=0
+富豪小镇 = type=https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions,requires-body=1,max-size=0,script-path=https://raw.fastgit.org/LubooC/Script/main/fhxz.js,script-update-interval=0
 */
 
 // [task_local]
