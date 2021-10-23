@@ -8,11 +8,14 @@ hostname = sunnytown.hyskgame.com
 https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions url script-request-body https://raw.fastgit.org/LubooC/Script/main/fhxz.js, requires-body=true, timeout=10, tag=富豪小镇
 #surge
 富豪小镇 = type=https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions,requires-body=1,max-size=0,script-path=https://raw.fastgit.org/LubooC/Script/main/fhxz.js,script-update-interval=0
+#青龙全局变量
+fhxzurl  
+值：https://sunnytown.hyskgame.com/... 随便的整个链接，多账号用 @ 隔开
 */
 
 // [task_local]
 //#富豪小镇
-// 10 0 * * * https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.js, tag=富豪小镇, enabled=true
+// 10 0 * * * https://raw.fastgit.org/LubooC/Script/main/fhxz.js, tag=富豪小镇, enabled=true
 
 
 const $ = new Env('富豪小镇');
