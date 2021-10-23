@@ -1,21 +1,18 @@
 /*
 [rewrite_local]
 #富豪小镇
-https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions url script-request-body https://raw.fastgit.org/LubooC/Script/main/fhxz.js
+https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions url script-request-body https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.js
 [MITM]
 hostname = sunnytown.hyskgame.com
 #loon
-https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions url script-request-body https://raw.fastgit.org/LubooC/Script/main/fhxz.js, requires-body=true, timeout=10, tag=富豪小镇
+https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions url script-request-body https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.js, requires-body=true, timeout=10, tag=柠檬富豪小镇
 #surge
-富豪小镇 = type=https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions,requires-body=1,max-size=0,script-path=https://raw.fastgit.org/LubooC/Script/main/fhxz.js,script-update-interval=0
-#青龙全局变量
-fhxzurl  
-值：https://sunnytown.hyskgame.com/... 随便的整个链接，多账号用 @ 隔开
+富豪小镇 = type=https://sunnytown.hyskgame.com/api/messages\SaccessToken=\w+&msgtype=system_getGpvGameOptions,requires-body=1,max-size=0,script-path=https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.js,script-update-interval=0
 */
 
 // [task_local]
 //#富豪小镇
-// 10 0 * * * https://raw.fastgit.org/LubooC/Script/main/fhxz.js, tag=富豪小镇, enabled=true
+// 10 0 * * * https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.js, tag=富豪小镇, enabled=true
 
 
 const $ = new Env('富豪小镇');
@@ -46,10 +43,10 @@ let arr15 = []
           console.log(`\n开始【富豪小镇账户 ${$.index}】`)
           await zrw() 
           $.log(`------------------任务结束------------------`)
-          //await cxjs();//查询加速次数
+          await cxjs();//查询加速次数
           await qtjsAll(arr15); //全体加速
           await $.wait(30000);
-          //await cxcj()//抽奖次数
+          await cxcj()//抽奖次数
           await zdcjAll(arr);//自动抽奖
           await $.wait(30000);
           await txlb();//提现列表
@@ -75,10 +72,10 @@ let arr15 = []
         console.log(`\n开始【富豪小镇账户 ${$.index}】`)
         await zrw() 
         $.log(`------------------任务结束------------------`)
-        //await cxjs();//查询加速次数
+        await cxjs();//查询加速次数
         await qtjsAll(arr15); //全体加速
         await $.wait(30000);
-        //await cxcj()//抽奖次数
+        await cxcj()//抽奖次数
         await zdcjAll(arr);//自动抽奖
         await $.wait(30000);
         await txlb();//提现列表
@@ -105,15 +102,17 @@ function cxjs(){
   return new Promise((resolve) => {
     id = fhxzurl.match(/Token=\S+&/)
     let url = {
-      url: 'https://sunnytown.hyskgame.com/api/messages?access' + id + 'msgtype=gfunc_getGfuncInfo',
-      body: '[{"type" : "gfunc_getGfuncInfo", "data" : { }}]',
+      url: 'https://sunnytown.hyskgame.com/api/messages?access' + id + 'msgtype=user_enterGame',
+      body: '[{"type" : "user_enterGame", "data" : { }}]',
     }
     $.post(url, async (err, resp, data) => {
       try {
         result = JSON.parse(data);
-        let cj = result[0].data.gfuncInfo.stealingState
+        let cj = result[3].data.speedUpInfo.remainingAllTimes
         $.log(`加速次数剩余：`+cj)
+        if(cj){
         for(let i = 1;i<cj;i++){arr15.push(i)}
+        }
       } catch (e) {
         $.logErr(e, resp);
       } finally {
@@ -133,7 +132,7 @@ function cxcj(){
     $.post(url, async (err, resp, data) => {
       try {
         result = JSON.parse(data);
-        let cj = result[0].data.lotteryInfo.remainingFreeTimes
+        let cj = result[0].data.lotteryInfo.remainingTimes
         $.log(`抽奖次数剩余：`+cj)
         if(cj){
           for(let i = 1;i<cj;i++){arr.push(i)}
@@ -339,7 +338,7 @@ function quantijs(num) {
           $.log(`全体加速今日次数已用完`)
           await $.wait(Math.floor(Math.random() * 100) + 3000);
         } else {
-          $.log(`全体加速成功 剩余次数：` + num)
+          $.log(`全体加速成功 已加速次数：` + num)
           await $.wait(Math.floor(Math.random() * 100) + 32000);
         }
       } catch (e) {
@@ -372,7 +371,7 @@ function zdcj(num) {
           $.log(`抽奖次数不足`)
           await $.wait(Math.floor(Math.random() * 100) + 3000);
         } else {
-          $.log(`抽奖成功 剩余次数：` + num)
+          $.log(`抽奖成功 已抽奖次数：` + num)
           await $.wait(Math.floor(Math.random() * 100) + 32000);
         }
       } catch (e) {
