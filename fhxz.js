@@ -46,10 +46,10 @@ let arr15 = []
           console.log(`\n开始【富豪小镇账户 ${$.index}】`)
           await zrw() 
           $.log(`------------------任务结束------------------`)
-          await cxjs();//查询加速次数
+          //await cxjs();//查询加速次数
           await qtjsAll(arr15); //全体加速
           await $.wait(30000);
-          await cxcj()//抽奖次数
+          //await cxcj()//抽奖次数
           await zdcjAll(arr);//自动抽奖
           await $.wait(30000);
           await txlb();//提现列表
@@ -75,10 +75,10 @@ let arr15 = []
         console.log(`\n开始【富豪小镇账户 ${$.index}】`)
         await zrw() 
         $.log(`------------------任务结束------------------`)
-        await cxjs();//查询加速次数
+        //await cxjs();//查询加速次数
         await qtjsAll(arr15); //全体加速
         await $.wait(30000);
-        await cxcj()//抽奖次数
+        //await cxcj()//抽奖次数
         await zdcjAll(arr);//自动抽奖
         await $.wait(30000);
         await txlb();//提现列表
