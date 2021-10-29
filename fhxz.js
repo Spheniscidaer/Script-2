@@ -21,7 +21,7 @@ status = (status = ($.getval("fhxzstatus") || "1")) > 1 ? `${status}` : ""; // �
 let fhxzurlArr = []
 let time = Math.round(Date.now() / 1000)
 let fhxzurl = $.isNode() ? (process.env.fhxzurl ? process.env.fhxzurl : "") : ($.getdata('fhxzurl') ? $.getdata('fhxzurl') : "")
-let fhxzurls = ""
+let fhxzurls = "",jscs=0,spjs=0
 let arr = []
 let arr15 = []
 //
@@ -45,10 +45,10 @@ let arr15 = []
           $.log(`------------------任务结束------------------`)
           await cxjs();//查询加速次数
           await qtjsAll(arr15); //全体加速
-          await $.wait(30000);
+          await $.wait(3000);
           await cxcj()//抽奖次数
           await zdcjAll(arr);//自动抽奖
-          await $.wait(30000);
+          await $.wait(3000);
           await txlb();//提现列表
         }
       }
@@ -74,10 +74,10 @@ let arr15 = []
         $.log(`------------------任务结束------------------`)
         await cxjs();//查询加速次数
         await qtjsAll(arr15); //全体加速
-        await $.wait(30000);
+        await $.wait(3000);
         await cxcj()//抽奖次数
         await zdcjAll(arr);//自动抽奖
-        await $.wait(30000);
+        await $.wait(3000);
         await txlb();//提现列表
       }
     }
@@ -185,6 +185,22 @@ function zrw(){
               await wx(i)
               await $.wait(2000);
                break;
+              case 3:
+                //加速
+                console.log(`  田地：`+nt[i].name + ` =>>`)
+                await cxjiasu()
+                if(jscs > 0){
+                  await jiasu(i,2002)
+                  await $.wait(2000);
+                }else if(spjs  >0){
+                  await jiasu(i,3001)
+                  await $.wait(10000);
+                }else{
+                  console.log(`加速次数不足`)
+                }
+                
+                
+                break; 
               default:
                 break;
            }
@@ -199,6 +215,62 @@ function zrw(){
 
   })
 }
+
+
+//加速
+function jiasu(i,priceType){
+  return new Promise((resolve) => {
+    id = fhxzurl.match(/Token=\S+&/)
+    let num = i+1;
+    let url = {
+      url: 'https://sunnytown.hyskgame.com/api/messages?access' + id + 'msgtype=farmland_speedUp',
+      body: '[{"type" : "farmland_speedUp", "data" : { "priceType" : '+ priceType +',"farmlandDefId" : '+num+'}}]',
+    }
+    $.post(url, async (err, resp, data) => {
+      try {
+        result = JSON.parse(data);
+        var lb = result[0]
+        if(lb.data.hasOwnProperty('code')){
+          $.log(`加速失败，稍后重试~~`)
+        }else{
+          $.log(`加速成功！`)
+          if(priceType == 3001){
+            console.log('等待30秒~加速10分钟');
+            await $.wait(20000);
+          }
+          
+        }
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve()
+      }
+    }, 0)
+  })
+}
+
+//查询加速
+function cxjiasu(){
+  return new Promise((resolve) => {
+    id = fhxzurl.match(/Token=\S+&/)
+    let url = {
+      url: 'https://sunnytown.hyskgame.com/api/messages?access' + id + 'msgtype=user_enterGame',
+      body: '[{"type" : "user_enterGame", "data" : { }}]',
+    }
+    $.post(url, async (err, resp, data) => {
+      try {
+        result = JSON.parse(data);
+        jscs =  result[0].data.userInfo.energy
+        spjs = result[3].data.speedUpInfo.remainingSingleTimes
+      } catch (e) {
+        $.logErr(e, resp);
+      } finally {
+        resolve()
+      }
+    }, 0)
+  })
+}
+
 //维修
 function wx(i){
   return new Promise((resolve) => {
@@ -216,10 +288,7 @@ function wx(i){
           $.log(`维修失败，稍后重试~~`)
         }else{
           $.log(`维修成功！`)
-          await $.wait(1500);
-          $.log(`提交制作`)
-          await zz(i);
-          await $.wait(1500);
+          await $.wait(2500);
         }
       } catch (e) {
         $.logErr(e, resp);
