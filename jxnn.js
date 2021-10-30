@@ -40,7 +40,7 @@ $.appId = 10028;
     return;
   }
   let count = 0
-  $.CryptoJS = $.isNode() ? require('D:\\脚本Nodejs\\crypto-js') : CryptoJS;
+  $.CryptoJS = $.isNode() ? require('crypto-js') : CryptoJS;
   await requestAlgo();
   await $.wait(1000)
   console.log('\n')
@@ -95,7 +95,7 @@ async function jxnn() {
       for (let i = 0; i < rwlist.length; i++) {
         let k = 0
         for (let j = 0; j < wclists.length; j++) {
-          if(rwlist[i].taskId == wclists[j].taskid){
+          if(rwlist[i].taskId == wclists[j].taskid && wclists[j].state == 2){
             k = 1
           }
         }
