@@ -1,4 +1,5 @@
 /*
+  下载链接：https://autovideo.autohome.com.cn/signnew/register/index.html?uid=105091440&pvareaid=6850761&shareplatform=weixin
 [rewrite_local]
 #闪辆
 https://newvideo.autohome.com.cn/openapi/activity-api/checkin/query_list?\w url script-request-body https://raw.fastgit.org/LubooC/Script/blob/main/sl.js
