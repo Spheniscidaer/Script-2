@@ -82,7 +82,7 @@ let uticket = ''
 
 //获取cookie
 function fhxzck() {
-   $.msg("ces")
+   $.log("ces")
   if ($request.url.indexOf("activity-api/checkin/query_list") > -1) {
     const slurl = $request.url
     if (slurl) $.setdata(slurl, `slurl${status}`)
