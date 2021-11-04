@@ -4,7 +4,7 @@
 #闪辆
 https://newvideo.autohome.com.cn/openapi/activity-api/checkin/query_list.* url script-request-body https://raw.fastgit.org/LubooC/Script/blob/main/sl.js
 [MITM]
-hostname = sunnytown.hyskgame.com
+hostname = newvideo.autohome.com.cn
 #loon
 https://newvideo.autohome.com.cn/openapi/activity-api/checkin/query_list.* url script-request-body https://raw.fastgit.org/LubooC/Script/blob/main/sl.js, requires-body=true, timeout=10, tag=萝卜闪辆
 #surge
