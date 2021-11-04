@@ -2,13 +2,13 @@
   下载链接：https://autovideo.autohome.com.cn/signnew/register/index.html?uid=105091440&pvareaid=6850761&shareplatform=weixin
 [rewrite_local]
 #闪辆
-https://newvideo.autohome.com.cn/openapi/activity-api/checkin/query_list?\w url script-request-body https://raw.fastgit.org/LubooC/Script/blob/main/sl.js
+https://newvideo.autohome.com.cn/openapi/activity-api/checkin/query_list.* url script-request-body https://raw.fastgit.org/LubooC/Script/blob/main/sl.js
 [MITM]
 hostname = sunnytown.hyskgame.com
 #loon
-https://newvideo.autohome.com.cn/openapi/activity-api/checkin/query_list?\w url script-request-body https://raw.fastgit.org/LubooC/Script/blob/main/sl.js, requires-body=true, timeout=10, tag=萝卜闪辆
+https://newvideo.autohome.com.cn/openapi/activity-api/checkin/query_list.* url script-request-body https://raw.fastgit.org/LubooC/Script/blob/main/sl.js, requires-body=true, timeout=10, tag=萝卜闪辆
 #surge
-闪辆 = type=https://newvideo.autohome.com.cn/openapi/activity-api/checkin/query_list?\w,requires-body=1,max-size=0,script-path=https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.jshttps://raw.fastgit.org/LubooC/Script/blob/main/sl.js,script-update-interval=0
+闪辆 = type=https://newvideo.autohome.com.cn/openapi/activity-api/checkin/query_list.*,requires-body=1,max-size=0,script-path=https://raw.fastgit.org/byxiaopeng/myscripts/main/fhxz.jshttps://raw.fastgit.org/LubooC/Script/blob/main/sl.js,script-update-interval=0
 */
 
 // [task_local]
