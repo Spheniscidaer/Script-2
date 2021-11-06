@@ -2,11 +2,9 @@
   下载链接：https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx592b7bf2a9f7f003&redirect_uri=https://v3.sdk.haowusong.com/api/auth/wechat/sharelogin&response_type=code&scope=snsapi_userinfo&state=AAABPHAA,dawbox-android#wechat_redirect
 [rewrite_local]
 #都爱玩
-https://v3.sdk.haowusong.com/api/box/wallet/info url script-request-header https://ghproxy.com/https://github.com/LubooC/Script/blob/main/daw.js
+https://v3.sdk.haowusong.com/api/channel/integral/pool?channel=dawbox  重写地址  https://ghproxy.com/https://github.com/LubooC/Script/blob/main/daw.js
 [MITM]
 hostname = v3.sdk.haowusong.com
-#loon
-https://v3.sdk.haowusong.com/api/box/wallet/info url script-request-header https://ghproxy.com/https://github.com/LubooC/Script/blob/main/daw.js, requires-body=true, timeout=10, tag=萝卜都爱玩
 */
 // [task_local]
 //#都爱玩
