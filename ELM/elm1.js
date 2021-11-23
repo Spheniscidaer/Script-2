@@ -88,6 +88,8 @@ let num = rand(10, 99)
 //获取cookie 
 function fhxzck() {
     if ($request.url.indexOf("svip") > -1) {
+        const elmck = $request.headers.Cookie
+        $.log(elmck)
         const elmck = $request.headers['Cookie']
         if (elmck) $.setdata(elmck, `elmck${status}`)
         $.log(elmck)
