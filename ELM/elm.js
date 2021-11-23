@@ -89,7 +89,8 @@ let num = rand(10, 99)
 function fhxzck() {
     if ($request.url.indexOf("svip") > -1) {
          $.log($request.headers)
-        const elmck = $request.headers['Cookie']
+        const elmck = $request.headers.Cookie
+        $.log(elmck)
         if (elmck) $.setdata(elmck, `elmck${status}`)
         $.log(elmck)
         $.msg($.name, "", `饿了么${status}数据获取成功`)
